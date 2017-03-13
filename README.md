@@ -17,28 +17,28 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Is it Kosher?.
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > Never doubt again.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  >  Post your questions about consumer goods and the helpful strangers of the internet will pass judgement on your perdicament.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > The world is full of forbidden fruits and hazardous ideas, not to mention lousy tech.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > Here, in a word, we review for the consumer what is and aint kosher.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > Is it Kosher? Sometimes, ya just gotta ask a question.
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Enter your query or topic in the search bar at the top to find your particular perdicament, or submit a fresh one for the internet.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > I always wondered if Hebrew National was kosher. And then visited Is it Kosher. Now I know. It's not.
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > This site is not meant to pass legal ruling on the kosher-status of goods and service. For that, ask your local orthodox Rabbi.
