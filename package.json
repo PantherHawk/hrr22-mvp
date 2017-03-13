@@ -1,0 +1,26 @@
+{
+  "name": "hrr22-mvp",
+  "version": "1.0.0",
+  "description": "isItKosher",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PantherHawk/hrr22-mvp.git"
+  },
+  "author": "Alex Rosenthal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PantherHawk/hrr22-mvp/issues"
+  },
+  "homepage": "https://github.com/PantherHawk/hrr22-mvp#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mongoose": "^4.8.7"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
