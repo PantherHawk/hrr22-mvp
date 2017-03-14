@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='kosher'>
 <head>
   <meta charset="UTF-8">
   <title> Is it Kosher? </title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
 </head>
 <body>
+  <h1>Is it Kosher?</h1>
+
+  <div ng-controller="questionCtrl">
+    <input type="text" name="post" ng-model="query" ng-model-options="{ debounce: 200 }"
+    ng-change="doSearch()">
+    {{askQuestion}}
+    <h2>Questions</h2>
+    <ul>
+      <li ng-repeat="datum in data | filter:query">
+        <p>
+          {{datum.text}}
+          {{datum.legal}}
+        </p>
+      </li>
+    </ul>
+  </div>
 
 </body>
+<script src="client/src/question.js"></script>
 </html>
