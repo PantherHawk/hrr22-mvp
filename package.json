@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/PantherHawk/hrr22-mvp#readme",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "mongoose": "^4.8.7"
+    "mongoose": "^4.8.7",
+    "morgan": "^1.8.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1"

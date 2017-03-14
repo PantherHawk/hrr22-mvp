@@ -1,53 +1,93 @@
-var kosher = angular.module('kosher', ['ngRoute']);
+var kosher = angular.module('kosher', []);
 
-
-// kosher.config(['$routeProvider', function($routeProvider) {
-
-//   $routeProvider
-//     .when('/question', {
-//       templateUrl: 'view/question.html',
-//       controller: 'questionCtrl'
-//     }).otherwise({
-//       redirectTo: '/question'
-//     })
-
-
-// }])
-
-//   .config(['$routeProvider', function($routeProvider, $locationProvider) {
-//     $routeProvider
-//       .when('/index', {
-//         templateUrl: 'question.html',
-//         controller: 'questionCtrl'
-//       })
-//       .otherwise({
-//         redirectTo: '/index'
-//       });
-//   }]);
-
-
-kosher.controller("questionCtrl", ['$scope', function($scope/*, Questions*/) {
-
-  $scope.data = [{
-    text: "Is this a kosher a pickle?  Because I don't think this is a kosher pickle", index: 1, legal: true
-  },
-  {
-    text: "Is it okay to eat milk at two hours forty?", index: 2, legal: false
-  },
-  {
-    text: "My Grandad said I could end Shabbos after the fourth hour.", index: 3, legal: true
-  }];
-
-
-  $scope.addQuestion = function() {
-    $scope.data.push({
-      text: $scope.query,
-      index: 4,
-      legal: true
+kosher.factory('Questions', ['$http', function($http) {
+  return {
+    get: function() {
+      return $http.get('/api/questions')
+        .then(function(resp) {
+          return resp.data;
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+    },
+    create: function(question) {
+      return $http.post('/api/questions', question)
+      .then(function(resp) {
+        console.log(resp.data);
+        console.log('You had to ask a question, didn\'t you');
+        return resp.data;
+      })
+      .catch(function(err) {
+        console.log('uh-oh: ', err);
       });
-    $scope.query = '';
+    }
   }
-  $scope.addQuestion();
+}]);
 
+// // kosher.config(['$routeProvider', function($routeProvider) {
+
+// //   $routeProvider
+// //     .when('/question', {
+// //       templateUrl: 'view/question.html',
+// //       controller: 'questionCtrl'
+// //     }).otherwise({
+// //       redirectTo: '/question'
+// //     })
+
+
+// // }])
+
+// //   .config(['$routeProvider', function($routeProvider, $locationProvider) {
+// //     $routeProvider
+// //       .when('/index', {
+// //         templateUrl: 'question.html',
+// //         controller: 'questionCtrl'
+// //       })
+// //       .otherwise({
+// //         redirectTo: '/index'
+// //       });
+// //   }]);
+
+
+kosher.controller("questionCtrl", ['$scope','$http', 'Questions', function($scope, $http, Questions) {
+
+  $scope.data = {};
+  // $scope.addQuestion = function() {
+  //   $scope.data.question = {
+  //     text: $scope.query,
+  //     index: 4,
+  //     legal: true
+  //     };
+  //   $scope.query = '';
+  // }
+  // $scope.addQuestion();
+
+  $scope.getQuestions = function() {
+    Questions.get()
+    .then(function(allTheQuestions) {
+      $scope.data = allTheQuestions.data;
+    })
+    .catch(function(error) {
+      console.log('error: ', error);
+    })
+
+
+    $scope.addQuestion = function(query) {
+      Questions.create(query)
+      .then(function(addedQuestion) {
+        console.log(addedQuestion);
+        $scope.query = {
+          text: addedQuestion,
+          legal: true
+          };
+        $scope.query = '';
+      })
+      .catch(function(error) {
+        console.log('error: ', error);
+      });
+    }
+  }
+  $scope.getQuestions();
 }]);
 

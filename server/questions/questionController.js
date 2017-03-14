@@ -1,6 +1,7 @@
 var Q = require('q');
 var Question = require('./questionModel');
 
+
 var createQuestion = Q.nbind(Question.create, Question);
 var findAllQuestions = Q.nbind(Question.find, Question);
 
@@ -18,4 +19,4 @@ module.exports = {
   newQuestion: function(request, response, next) {
     console.log(request.body);
     }
-  }
+  };
