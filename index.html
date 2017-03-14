@@ -1,29 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" ng-app='kosher'>
+<html lang="en" ng-app="kosher">
+
 <head>
-  <meta charset="UTF-8">
-  <title> Is it Kosher? </title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-
+    <meta charset="UTF-8">
+    <title> Is it Kosher? </title>
 </head>
-<body>
-  <h1>Is it Kosher?</h1>
 
-  <div ng-controller="questionCtrl">
-    <input type="text" name="post" ng-model="query" ng-model-options="{ debounce: 200 }"
-    ng-change="doSearch()">
-    {{askQuestion}}
-    <h2>Questions</h2>
-    <ul>
-      <li ng-repeat="datum in data | filter:query">
-        <p>
-          {{datum.text}}
-          {{datum.legal}}
-        </p>
-      </li>
-    </ul>
-  </div>
+<body>
+    <h1>Is it Kosher?</h1>
+    <!-- <main ng-view></main> -->
+
+
+  <div id="container">
+        <div ng-controller="questionCtrl">
+            <button ng-click="addQuestion()">
+                <input type="text" ng-model="query" /> {{ query }}
+            </button>
+            <!-- <input type="text" name="post" ng-model="query" ng-model-options="{ debounce: 200 }" ng-change="doSearch()"> {{ query }} -->
+            <h2>Questions</h2>
+            <ul>
+                <li ng-repeat="datum in data | filter:query">
+                    <p>
+                        {{datum.text}} Is it Kosher? {{datum.legal}}
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <form>
+            <input ng-model="inputBoxValue" name="query">
+        </form>
+    </div>
+
 
 </body>
-<script src="client/src/question.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+<!-- <script src="client/src/services.js"></script> -->
+<!-- <script src="client/src/question.js"></script> -->
+<script src="client/src/app.js"></script>
+
 </html>
