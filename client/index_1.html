@@ -19,16 +19,26 @@
 
   <div id="container">
         <div ng-controller="questionCtrl">
+        <form>
+
+            <input type="text" ng-model="query" />
+            <div>
+            {{ query }}
+
+            </div>
             <button ng-click="addQuestion()">
                 <!-- <br><input type="text" ng-model="query-title"/> {{ title }} </br> -->
-                <input type="text" ng-model="query" /> {{ query }}
             </button>
+        </form>
              <!-- <input type="text" name="post" ng-model="query" ng-model-options="{ debounce: 200 }" ng-change="doSearch()"> {{ query }} -->
            <h2>Questions</h2>
             <ul>
                 <li ng-repeat="datum in data track by $index">
                     <p>
-                        {{datum.text}} Is it Kosher? {{datum.legal}}
+                         Is it Kosher?
+                    </p>
+                    <p>
+                        <h3>{{answer}}</h3>
                     </p>
                 </li>
             </ul>

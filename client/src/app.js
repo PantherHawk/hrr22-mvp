@@ -12,7 +12,12 @@ kosher.factory('Questions', ['$http', function($http) {
         });
     },
     create: function(question) {
-      return $http.post('/api/questions', question)
+      console.log("Question here: ", question)
+      return $http({
+        method: 'POST',
+        url: '/api/questions',
+        data: JSON.stringify({text: question})
+      })
       .then(function(resp) {
         console.log(resp.data);
         console.log('You had to ask a question, didn\'t you');
@@ -71,23 +76,21 @@ kosher.controller("questionCtrl", ['$scope','$http', 'Questions', function($scop
     .catch(function(error) {
       console.log('error: ', error);
     })
+  }
+    $scope.data = '';
 
-
-    $scope.addQuestion = function(query) {
-      Questions.create(query)
-      .then(function(addedQuestion) {
-        console.log(addedQuestion);
-        $scope.query = {
-          text: addedQuestion,
-          legal: true
-          };
-        $scope.query = '';
+    $scope.addQuestion = function() {
+      console.log("query")
+      Questions.create($scope.query)
+      .then(function(newAnswer) {
+        console.log("Added a query", newAnswer);
+        $scope.answer = newAnswer.answer ? "Huzzah! It's Kosher!!!" : "Fuhgetaboutit! That's Treif!";
       })
       .catch(function(error) {
         console.log('error: ', error);
       });
     }
-  }
+
   $scope.getQuestions();
 }]);
 

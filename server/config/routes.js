@@ -1,4 +1,6 @@
 var path = require('path');
+var bodyParser = require('body-parser');
+var questionController = require('../questions/questionController.js')
 
 module.exports = function (app, express) {
 
@@ -12,10 +14,7 @@ module.exports = function (app, express) {
     res.sendFile(path.join(__dirname, '../../client/index_1.html'));
    });
 
-  app.post('/api/questions', function(req, res) {
-    console.log(res.data);
-    res.send(res.data);
-  })
+  app.post('/api/questions', questionController.newQuestion);
  // app.get('*', function(req, res) {
  //   res.sendFile(path.join(__dirname, '../../client/index.html'));
  // });
