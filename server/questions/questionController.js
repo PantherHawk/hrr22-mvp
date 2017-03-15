@@ -1,4 +1,4 @@
-var dummies = require('./dummies.js');
+var dummies = require('./dummies.js')
 var Q = require('q');
 var Question = require('./questionModel');
 
@@ -18,9 +18,10 @@ module.exports = {
   },
 
   newQuestion: function(request, response, next) {
-    console.log(request.body);
     var query = request.body.text;
+
     var answer = dummies[query];
-    res.send({answer: answer});
+
+    response.send({answer: answer});
   }
 };

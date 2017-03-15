@@ -33,13 +33,12 @@
              <!-- <input type="text" name="post" ng-model="query" ng-model-options="{ debounce: 200 }" ng-change="doSearch()"> {{ query }} -->
            <h2>Questions</h2>
             <ul>
-                <li ng-repeat="datum in data track by $index">
+                <li ng-repeat="answer in answers track by $index">
                     <p>
-                         Is it Kosher?
-                    </p>
-                    <p>
+                        Is it Kosher?
                         <h3>{{answer}}</h3>
                     </p>
+
                 </li>
             </ul>
         </div>

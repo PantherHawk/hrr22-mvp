@@ -3,7 +3,10 @@ var kosher = angular.module('kosher', []);
 kosher.factory('Questions', ['$http', function($http) {
   return {
     get: function() {
-      return $http.get('/api/questions')
+      return $http({
+        method: 'GET',
+        url: '/api/questions'
+      })
         .then(function(resp) {
           return resp.data;
         })
@@ -71,20 +74,23 @@ kosher.controller("questionCtrl", ['$scope','$http', 'Questions', function($scop
   $scope.getQuestions = function() {
     Questions.get()
     .then(function(allTheQuestions) {
-      $scope.data = allTheQuestions.data;
+      $scope.answers = allTheQuestions.data;
     })
     .catch(function(error) {
       console.log('error: ', error);
     })
   }
-    $scope.data = '';
-
+    console.log('input   :', $scope.query)
     $scope.addQuestion = function() {
-      console.log("query")
+      console.log("query", $scope.query)
       Questions.create($scope.query)
       .then(function(newAnswer) {
-        console.log("Added a query", newAnswer);
-        $scope.answer = newAnswer.answer ? "Huzzah! It's Kosher!!!" : "Fuhgetaboutit! That's Treif!";
+        console.log("Added a query", newAnswer.answer);
+        let answer = newAnswer.answer ? "Huzzah! It's Kosher!!!" : "Fuhgetaboutit! That's Treif!";
+        $scope.answers = [];
+        console.log($scope.answers);
+        $scope.answers.push(answer);
+        $scope.query = '';
       })
       .catch(function(error) {
         console.log('error: ', error);
