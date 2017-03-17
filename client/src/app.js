@@ -3,11 +3,13 @@ var kosher = angular.module('kosher', []);
 kosher.factory('Questions', ['$http', function($http) {
   return {
     get: function() {
+      console.log('get request here=================')
       return $http({
         method: 'GET',
         url: '/api/questions'
       })
         .then(function(resp) {
+          console.log('data: ', resp.data)
           return resp.data;
         })
         .catch(function(err) {
@@ -72,6 +74,7 @@ kosher.controller("questionCtrl", ['$scope','$http', 'Questions', function($scop
   // $scope.addQuestion();
 
   $scope.getQuestions = function() {
+    console.log('line 76')
     Questions.get()
     .then(function(allTheQuestions) {
       $scope.answers = allTheQuestions.data;

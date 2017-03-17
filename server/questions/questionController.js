@@ -8,8 +8,10 @@ var findAllQuestions = Q.nbind(Question.find, Question);
 
 module.exports = {
   allQuestions: function(request, response, next) {
+    console.log('in all questions');
     findAllQuestions({})
       .exec(function(questions) {
+        console.log('questions in allquestion()  ', questions);
         response.json(questions);
       })
       .fail(function(error) {
@@ -18,10 +20,17 @@ module.exports = {
   },
 
   newQuestion: function(request, response, next) {
-    var query = request.body.text;
-
-    var answer = dummies[query];
-
-    response.send({answer: answer});
+    const query = request.body.text
+    let question = new Question({
+      question: query
+    })
+    .save(function(err, savedQuestion) {
+      if (err) {
+        console.log('err:', err);
+      } else {
+        console.log('Saved question!');
+        response.status(201).send('Good Job');
+      }
+    })
   }
 };
